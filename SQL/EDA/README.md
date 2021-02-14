@@ -1,1 +1,3 @@
 # EDA
+
+Wstępna analiza danych!
