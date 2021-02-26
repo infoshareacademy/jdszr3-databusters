@@ -1,0 +1,80 @@
+--first analytics
+
+--1. checking all the countries = where the currency isn't empy
+select 
+	*
+from country c2 
+where c2.currencyunit!='';
+
+
+--2.years for indicator SH.XPD.TOTL.ZS - health expenditure, total (%of GDP)
+select distinct  
+	i.rocznik  
+from indicators i
+join country c2 on i.countrycode = c2.countrycode 
+where i.indicatorcode='NE.EXP.GNFS.CD' and c2.currencyunit!=''
+order by i.rocznik;
+
+--random check
+select * from indicators 
+where indicatorcode = 'SH.XPD.TOTL.ZS';
+
+select  i.countryname 
+,		i.rocznik
+from indicators i 
+join country c on i.countrycode = c.countrycode 
+where c.currencyunit <> ''
+and	 i.indicatorcode like 'SH.XPD.TOTL.ZS'
+order by 1,2;
+
+--3. Highest indicator value for selected year // DODAJ ROW NUMBER
+select  i.countryname 
+,		round(sum(value)) as wartosc
+from indicators i 
+join country c on i.countrycode = c.countrycode 
+where c.currencyunit <> ''
+and	 i.indicatorcode like 'SH.XPD.TOTL.ZS'
+and i.rocznik = 2000
+group by i.countryname 
+order by 2 desc;
+
+--4. Lowest indicator value for selected year // DODAJ ROW NUMBER!
+select  i.countryname 
+,		round(sum(value)) as wartosc
+from indicators i 
+join country c on i.countrycode = c.countrycode 
+where c.currencyunit <> ''
+and	 i.indicatorcode like 'SH.XPD.TOTL.ZS'
+and i.rocznik = 2000
+group by i.countryname 
+order by 2 asc;
+
+--5. Statistics for each indicator
+select  i.countryname 
+,		avg(value) as srednia
+,		min(value) as minimalna
+,		max(value) as maksymalna
+,		percentile_cont(0.5) within group (order by value) as mediana	
+,		percentile_cont(0.25) within group (order by value) as q1
+,		percentile_cont(0.75) within group (order by value) as q3
+from indicators i
+join country c on i.countrycode = c.countrycode 
+where i.indicatorcode='SH.XPD.TOTL.ZS' and c.currencyunit!=''
+group by i.rocznik, i.countryname ;
+
+--6. YoY
+
+with zmiana_yoy as (
+select   
+		avg(value) as srednia
+,		rocznik 	
+from indicators
+where indicatorcode like 'SH.XPD.TOTL.ZS'
+group by rocznik 
+)
+select lag(srednia) over ()
+,		srednia 
+,		rocznik 
+,		(srednia - lag(srednia) over() ) / lag(srednia) over () *100 as zmiana
+from zmiana_yoy ;
+
