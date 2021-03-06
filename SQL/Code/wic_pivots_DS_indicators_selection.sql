@@ -20,16 +20,31 @@ select
 	c2.currencyunit
 ,	i.countryname 
 ,	i.indicatorcode 
-,	i.rocznik 
+,	i.rocznik
 ,	i.value 
 from indicators i
 join country c2 on i.countrycode = c2.countrycode 
-where i.indicatorcode='EG.USE.ELEC.KH.PC' and c2.currencyunit!=''
+where i.indicatorcode='EG.USE.ELEC.KH.PC' 
+	and c2.currencyunit!=''
+--	and i.countryname = 'Albania'
+--	and i.rocznik = '2012'
 order by i.countryname, i.rocznik 
 ;
 
+--jaki jest najœwie¿szy odczyt wskaŸnika? 
+--wiêkszoœæ krajów do 2012, tylko Benin 2008
+select distinct 
+	i.countryname 
+,	max(i.rocznik) over (partition by i.countryname) as naj_rocznik 
+from indicators i
+join country c2 on i.countrycode = c2.countrycode 
+where i.indicatorcode='EG.USE.ELEC.KH.PC' and c2.currencyunit!=''
+group by i.countryname, i.rocznik
+order by i.countryname 
+;
+
 --widok z odczytami dla wskaŸnika "Electric power consumption (kWh per capita)"
---drop view v_indi1;
+drop view v_indi1;
 
 create view v_indi1 as
 (
@@ -37,8 +52,8 @@ select
 	c2.currencyunit
 ,	i.countryname 
 ,	i.indicatorcode 
-,	i.rocznik 
-,	i.value 
+,	i.rocznik as rocznik
+,	i.value
 from indicators i
 join country c2 on i.countrycode = c2.countrycode 
 where i.indicatorcode='EG.USE.ELEC.KH.PC' and c2.currencyunit!=''
@@ -54,7 +69,8 @@ FROM crosstab
 'select
 	indi1.countryname::text  
 ,	indi1.rocznik::text  
-,	sum(indi1.value)::numeric  
+,	sum(indi1.value)::numeric
+--,	indi1.value::numeric  
 from v_indi1 indi1 
 group by indi1.countryname, indi1.rocznik
 order by indi1.countryname, indi1.rocznik 
@@ -116,4 +132,28 @@ AS final_result
 ,      "2010"  numeric
 ,      "2011"  numeric
 ,      "2012"  numeric
-);
+)
+;
+
+--w ostatnich 5 latach
+select 
+	vi.countryname  
+,	vi.rocznik
+,	vi.value::numeric as akt_rok
+,	(lag(vi.value) over())::numeric as pop_rok
+,	(vi.value-lag(vi.value) over())*100.0/lag(vi.value) over() as dynamika
+from v_indi1 vi 
+where vi.rocznik in ('2012', '2011', '2010', '2009', '2008')
+order by vi.countryname, vi.rocznik 
+;
+
+select 
+	vi.countryname  
+,	vi.rocznik
+,	vi.value::numeric as akt_rok
+,	(lag(vi.value) over())::numeric as pop_rok
+,	(vi.value-lag(vi.value) over())*100.0/lag(vi.value) over() as dynamika
+from v_indi1 vi 
+where vi.rocznik in ('2012', '1961') and vi.countryname = 'Australia'
+order by vi.countryname, vi.rocznik 
+;
