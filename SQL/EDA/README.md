@@ -1,6 +1,6 @@
 # EDA
 
-Wstępna analiza danych.
+Initial data analysis.
 
 1. Creating tables based on data available on kaggle:
 https://www.kaggle.com/worldbank/world-development-indicators
