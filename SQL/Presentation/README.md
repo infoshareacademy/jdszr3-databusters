@@ -1,6 +1,6 @@
 # SQL
 
-Prezentacja przygotowana przez zespół **DATABUSTERS** w składzie:
+Presentation prepared by team **DATABUSTERS**:
 * Katarzyna Hewelt
 * Kinga Klejne
 * Małgorzata Mastalerz
