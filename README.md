@@ -2,8 +2,8 @@
 Databusters team - repository
 
 Team members:
-1. Kinga Klejne
-2. Katarzyna Hewelt
-3. Karolina Mastalerz
-4. Piotr Nowicki
-5. Dariusz Starosta
+1. [Kinga Klejne] (https://github.com/KingaKlejne)
+2. [Katarzyna Hewelt](https://github.com/kasiahewelt)
+3. [Karolina Mastalerz] (https://github.com/karolinamst)
+4. [Piotr Nowicki] (https://github.com/piotrnowicki1510)
+5. [Dariusz Starosta]
