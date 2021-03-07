@@ -6,4 +6,4 @@ Team members:
 2. Katarzyna Hewelt
 3. Karolina Mastalerz
 4. Piotr Nowicki
-5. Dariusz Starosta [GitHub](http://github.com)
+5. Dariusz Starosta [GitHub](https://github.com/darstar-ds?tab=repositories)
