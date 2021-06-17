@@ -11,7 +11,7 @@ from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/public')
 app.secret_key = "databusters" # needed for decrypting the data send to/from database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3' # database config
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -43,6 +43,10 @@ def admin():
 @app.route("/about")
 def about():
 	return render_template("about.html")    
+
+@app.route("/main")
+def main():
+	return render_template("main.html")  
 
 # Redirecting user to specific website "Login"
 @app.route("/login", methods=["POST", "GET"]) # on this website POST and GET methods are used
@@ -89,4 +93,4 @@ def logout():
 if __name__ == "__main__":
     app.debug = True # show details of an error
     db.create_all() # create database
-    app.run(port=4996) # run app on port 4996 (default is 5000 but does not work)
+    app.run(port=8080) # run app on port 4996 (default is 5000 but does not work)
