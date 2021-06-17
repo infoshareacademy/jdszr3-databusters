@@ -1,7 +1,53 @@
 {% extends "base.html" %}
 {% block title %}Home Page{% endblock %}
 {% block content %}
-<img src="{{url_for('static', filename='aster.jpeg')}}" />
-<h1>NASA ASTROID CLASSFICATION</h1> 
-<h4>Classifying whether an asteroid is hazardous or not</h4>
+<div style="text-align: center;">
+    <img src="{{url_for('static', filename='aster.jpeg')}}" />
+    <br>
+    </br>
+    <h1>NASA ASTROID CLASSFICATION</h1> 
+    <h4>Classifying whether an asteroid is hazardous or not</h4>  
+    <br>
+    </br>  
+    <h7>by DATABUSTERS</h7>  
+</div>
+<br>
+</br> 
+<br>
+</br> 
+<h4>INTRODUCTION</h4>
+<h6>Data</h6>
+The data is about Asteroids - NeoWs. NeoWs (Near Earth Object Web Service) is a RESTful web service for near earth Asteroid information. With NeoWs a user can: search for Asteroids based on their closest approach date to Earth, lookup a specific Asteroid with its NASA JPL small body id, as well as browse the overall data-set. Acknowledgements Data-set: All the data is from the (http://neo.jpl.nasa.gov/). This API is maintained by SpaceRocks Team: David Greenfield, Arezu Sarvestani, Jason English and Peter Baunach.
+<br>
+</br>
+<h6>Tasks</h6>
+Based on the information within the dataset we want to performs two tasks:
+<br>
+</br>
+<ul>
+<li>Develop a model that predicts if an asteroid is going to be hazardous or not</li>
+<li>Build an application</li></ul>
+<br>
+</br>
+To tackle this two tasks we'll use the methods listed below, and extract the results from the method with best performance on unseen data
+<br>
+</br>
+<ul>
+<li>Logistic Regression</li>
+<li>Decision Tree</li>
+<li>Random Forest</li>
+<li>SVM</li>
+<li>XGBoost</li>
+<li>KNN</li>
+<li>KMeans</li>
+</ul>
+
+<br>
+</br> 
+<br>
+</br> <br>
+</br> 
+<br>
+</br> 
+
 {% endblock %}
