@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Asteroids parameters:{% endblock %}
+{% block title %}ARMAGEDDON by Databusters{% endblock %}
 
 {% block content %}
     {% with messages  = get_flashed_messages() %}
@@ -10,10 +10,10 @@
         {% endif %}
     {% endwith %}
 <div style="text-align: center;">
-    <img src="{{url_for('static', filename='aster.jpeg')}}" />
+    <img src="/static/images/aster.jpeg">
     <br>
     </br>
-    <h1>NASA ASTROID CLASSFICATION</h1> 
+    <h1>NASA ASTEROID CLASSFICATION</h1> 
     <h4>Classifying whether an asteroid is hazardous or not</h4>  
     <br>
     </br>  
@@ -49,13 +49,4 @@ To tackle this two tasks we'll use the methods listed below, and extract the res
 <li>KNN</li>
 <li>KMeans</li>
 </ul>
-
-<br>
-</br> 
-<br>
-</br> <br>
-</br> 
-<br>
-</br> 
-
 {% endblock %}
