@@ -1,6 +1,14 @@
 {% extends "base.html" %}
-{% block title %}Home Page{% endblock %}
+{% block title %}Asteroids parameters:{% endblock %}
+
 {% block content %}
+    {% with messages  = get_flashed_messages() %}
+        {%if messages %}
+            {% for msg in messages%}
+                <p>{{msg}}</p>
+            {% endfor%}
+        {% endif %}
+    {% endwith %}
 <div style="text-align: center;">
     <img src="{{url_for('static', filename='aster.jpeg')}}" />
     <br>

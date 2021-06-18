@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Login Page{% endblock %}
+{% block title %}Is armageddon incoming?!?!?{% endblock %}
 
 {% block content %}
     {% with messages  = get_flashed_messages() %}
@@ -9,9 +9,6 @@
             {% endfor%}
         {% endif %}
     {% endwith %}
-<form action="#" method="post">
-	<p>Name:</p>
-	<p><input type="text" name="nm" /></p>
-	<p><input type="submit" value="Submit"/></p>
-</form>
+<p>Hello, your asteroid is {{is_hazardous}}!</p>
+
 {% endblock %}
