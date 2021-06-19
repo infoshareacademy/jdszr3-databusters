@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Asteroids parameters:{% endblock %}
+
+{% block content %}
+    {% with messages  = get_flashed_messages() %}
+        {%if messages %}
+            {% for msg in messages%}
+                <p>{{msg}}</p>
+            {% endfor%}
+        {% endif %}
+    {% endwith %}
+<form action="#" method="post">
+	<p>Name1:</p>
+	<p><input type="text" name1="nm1" /></p>
+    <p>Name2:</p>
+	<p><input type="text" name2="nm2" /></p>
+    <p>Name3:</p>
+	<p><input type="text" name3="nm3" /></p>
+    <p>Name4:</p>
+	<p><input type="text" name4="nm4" /></p>
+    <p>Name5:</p>
+	<p><input type="text" name5="nm5" /></p>
+    <p>Name6:</p>
+	<p><input type="text" name6="nm6" /></p>
+	<p><input type="submit" value="Submit"/></p>
+</form>
+{% endblock %}
