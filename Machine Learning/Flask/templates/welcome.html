@@ -113,4 +113,18 @@ Some of the features’ description is given below:
 </li>
 
 </ul>
+
+<br>
+</br>
+    <img src="/static/images/hazardous.png" width="1200" height="600">
+    <br>
+    </br>
+
+    The count plot depicts that it is a case of an imbalanced dataset. We have a class which is dominating the other in terms of the number of data entries.
+    83.89% of the data instances are labelled as 0 (not hazardous) and only
+    16.10% are labelled as 1 (hazardous).
+    <br>
+    </br>
+    This means that even if we have a broken model that predicts all values as 0(not hazardous), then the accuracy will be 83.89%. So, we can not merely rely on accuracy to evaluate a machine learning classifier trained on this dataset. To get a clear idea of imbalanced data and numerous metrics that are used to evaluate a classification model, please read <a href="https://medium.com/@itbodhi/handling-imbalanced-data-sets-in-machine-learning-5e5f33c70163">this article </a>.
+
 {% endblock %}
