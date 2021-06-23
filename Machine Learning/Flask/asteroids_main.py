@@ -15,15 +15,22 @@ def welcome():
 
 @app.route("/form", methods=["POST", "GET"])
 def form():
-    if request.method == "POST": # POST used for keeping the user data from a form
-        session.permanent = True  # <--- makes the permanent session
-        flash("Data uploaded successfully!")
-        return redirect(url_for("results"))
-    else:
-        flash("Data not uploaded!")
-        return render_template("form.html")
+    if request.method == 'POST':
+        # Print the form data to the console
+        # And create dictionary and print it
+        form_dict = {}
+        for key, value in request.form.items():
+            form_dict[key] = value
+            print(f'{key}: {value}')
+        print(form_dict)
 
-@app.route("/results")
+        # Save the form data to the session object
+        session['Absolute Magnitude'] = request.form['Absolute Magnitude']
+        return redirect(url_for('results'))
+
+    return render_template("form.html")
+
+@app.route("/results", methods=["GET"])
 def results():
     return render_template("results.html")
     
