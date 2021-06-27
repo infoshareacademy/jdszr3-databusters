@@ -77,7 +77,7 @@ def contacts():
 
 if __name__ == "__main__":
     app.debug = True
-    model = joblib.load('models/xgboost_model.pkl')
+    model = joblib.load('Machine Learning/Flask/models/xgboost_model.pkl')
     app.run(port=4996)
 
 
