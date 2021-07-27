@@ -9,6 +9,13 @@
             {% endfor%}
         {% endif %}
     {% endwith %}
+
+<style>
+table {
+    border-spacing: 105px;
+    }
+</style>
+
 <!-- <form action="/results" method="post"> -->
 <form method="post">    
     <table>
@@ -17,208 +24,39 @@
           <tr>
             <th>Asteroid data</th>
             <th></th>
+            <th></th>
             <th>Mean Values</th>
-            <th>Example</th>
+            <th></th>
+            <!-- <th style="text-align:center"><button id="haz_but">Hazardous</button></th> -->
+            
+            <th style="text-align:center"><input type="submit" name="haz_but" value="Hazardous"/></th>
+            <!-- <th>Hazardous</th> -->
+            <th></th>
+            <th style="text-align:center"><input type="submit" name="not_haz_but" value="Not Hazardous"/></th>
           </tr>
         </thead>
     
-        <!-- Table Element (Row) -->
+
         <tbody>
+            {%for i in range(0, len_fl)%}
             <tr>  
-                <td><label for="Absolute Magnitude">Absolute Magnitude:</label></td>
-                <td><input type="text" id="Absolute Magnitude" name="Absolute Magnitude" /></td>
-                <td>34567</td>
-                <td>87654</td>
+                <td><label for="{{feature_list[i]}}">{{feature_list[i]}}:</label></td>
+                <td style="text-align:right"><input type="number" step="any" id="{{feature_list[i]}}" name="{{feature_list[i]}}" /></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td style="text-align:right">{{feature_means[i]}}</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td style="text-align:right">{{hazardous_values[i]}}</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td style="text-align:right">{{not_hazardous_values[i]}}</td>
             </tr>
-            <tr>  
-                <td><label for="Est Dia in KM(min)">Est Dia in KM(min):</label></td>
-                <td><input type="text" id="Est Dia in KM(min)" name="Est Dia in KM(min)" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Est Dia in KM(max)">Est Dia in KM(max):</label></td>
-                <td><input type="text" id="Est Dia in KM(max)" name="Est Dia in KM(max)" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Relative Velocity km per hr">Relative Velocity km per hr:</label></td>
-                <td><input type="text" id="Relative Velocity km per hr" name="Relative Velocity km per hr" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Miles per hour">Miles per hour:</label></td>
-                <td><input type="text" id="Miles per hour" name="Miles per hour" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Miss Dist.(kilometers)">Miss Dist.(kilometers):</label></td>
-                <td><input type="text" id="Miss Dist.(kilometers)" name="Miss Dist.(kilometers)" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Orbit Uncertainity">Orbit Uncertainity:</label></td>
-                <td><input type="text" id="Orbit Uncertainity" name="Orbit Uncertainity" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Minimum Orbit Intersection">Minimum Orbit Intersection:</label></td>
-                <td><input type="text" id="Minimum Orbit Intersection" name="Minimum Orbit Intersection" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Jupiter Tisserand Invariant">Jupiter Tisserand Invariant:</label></td>
-                <td><input type="text" id="Jupiter Tisserand Invariant" name="Jupiter Tisserand Invariant" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Epoch Osculation">Epoch Osculation:</label></td>
-                <td><input type="text" id="Epoch Osculation" name="Epoch Osculation" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Eccentricity">Eccentricity:</label></td>
-                <td><input type="text" id="Eccentricity" name="Eccentricity" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Semi Major Axis">Semi Major Axis:</label></td>
-                <td><input type="text" id="Semi Major Axis" name="Semi Major Axis" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Inclination">Inclination:</label></td>
-                <td><input type="text" id="Inclination" name="Inclination" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Asc Node Longitude">Asc Node Longitude:</label></td>
-                <td><input type="text" id="Asc Node Longitude" name="Asc Node Longitude" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Orbital Period">Orbital Period:</label></td>
-                <td><input type="text" id="Orbital Period" name="Orbital Period" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Perihelion Distance">Perihelion Distance:</label></td>
-                <td><input type="text" id="Perihelion Distance" name="Perihelion Distance" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Perihelion Arg">Perihelion Arg:</label></td>
-                <td><input type="text" id="Perihelion Arg" name="Perihelion Arg" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Aphelion Dist">Aphelion Dist:</label></td>
-                <td><input type="text" id="Aphelion Dist" name="Aphelion Dist" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Perihelion Time">Perihelion Time:</label></td>
-                <td><input type="text" id="Perihelion Time" name="Perihelion Time" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Mean Anomaly">Mean Anomaly:</label></td>
-                <td><input type="text" id="Mean Anomaly" name="Mean Anomaly" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
-            <tr>  
-                <td><label for="Mean Motion">Mean Motion:</label></td>
-                <td><input type="text" id="Mean Motion" name="Mean Motion" /></td>
-                <td>34567</td>
-                <td>87654</td>
-            </tr>
+            {%endfor%}
         </tbody>
-      </table>
-	<!-- <label for="Absolute Magnitude">Absolute Magnitude:</label>
-	<input type="text" id="Absolute Magnitude" name="Absolute Magnitude" />
-    <br>
-    <label for="Est Dia in KM(min)">Est Dia in KM(min):</label>
-	<input type="text" id="Est Dia in KM(min)" name="Est Dia in KM(min)" />
-    <br>
-    <label for="Est Dia in KM(max)">Est Dia in KM(max):</label>
-	<input type="text" id="Est Dia in KM(max)" name="Est Dia in KM(max)" />
-    <br> -->
-    <!-- <label for="Relative Velocity km per sec">Relative Velocity km per sec:</label>
-	<input type="text" id="Relative Velocity km per sec" name="Relative Velocity km per sec" />
-    <br> -->
-    <!-- <label for="Relative Velocity km per hr">Relative Velocity km per hr:</label>
-	<input type="text" id="Relative Velocity km per hr" name="Relative Velocity km per hr" />
-    <br> -->
-    <!-- <label for="Miles per hour">Miles per hour:</label>
-	<input type="text" id="Miles per hour" name="Miles per hour" />
-    <br> -->
-    <!-- <label for="Miss Dist.(kilometers)">Miss Dist.(kilometers):</label>
-	<input type="text" id="Miss Dist.(kilometers)" name="Miss Dist.(kilometers)" />
-    <br> -->
-    <!-- <label for="Orbit Uncertainity">Orbit Uncertainity:</label>
-	<input type="text" id="Orbit Uncertainity" name="Orbit Uncertainity" />
-    <br> -->
-    <!-- <label for="Minimum Orbit Intersection">Minimum Orbit Intersection:</label>
-	<input type="text" id="Minimum Orbit Intersection" name="Minimum Orbit Intersection" />
-    <br> -->
-    <!-- <label for="Jupiter Tisserand Invariant">Jupiter Tisserand Invariant:</label>
-	<input type="text" id="Jupiter Tisserand Invariant" name="Jupiter Tisserand Invariant" />
-    <br> -->
-    <!-- <label for="Epoch Osculation">Epoch Osculation:</label>
-	<input type="text" id="Epoch Osculation" name="Epoch Osculation" />
-    <br> -->
-    <!-- <label for="Eccentricity">Eccentricity:</label>
-	<input type="text" id="Eccentricity" name="Eccentricity" />
-    <br> -->
-    <!-- <label for="Semi Major Axis">Semi Major Axis:</label>
-	<input type="text" id="Semi Major Axis" name="Semi Major Axis" />
-    <br> -->
-    <!-- <label for="Inclination">Inclination:</label>
-	<input type="text" id="Inclination" name="Inclination" />
-    <br> -->
-    <!-- <label for="Asc Node Longitude">Asc Node Longitude:</label>
-	<input type="text" id="Asc Node Longitude" name="Asc Node Longitude" />
-    <br> -->
-    <!-- <label for="Orbital Period">Orbital Period:</label>
-	<input type="text" id="Orbital Period" name="Orbital Period" />
-    <br> -->
-    <!-- <label for="Perihelion Distance">Perihelion Distance:</label>
-	<input type="text" id="Perihelion Distance" name="Perihelion Distance" />
-    <br> -->
-    <!-- <label for="Perihelion Arg">Perihelion Arg:</label>
-	<input type="text" id="Perihelion Arg" name="Perihelion Arg" />
-    <br> -->
-    <!-- <label for="Aphelion Dist">Aphelion Dist:</label>
-	<input type="text" id="Aphelion Dist" name="Aphelion Dist" />
-    <br> -->
-    <!-- <label for="Perihelion Time">Perihelion Time:</label>
-	<input type="text" id="Perihelion Time" name="Perihelion Time" />
-    <br> -->
-    <!-- <label for="Mean Anomaly">Mean Anomaly:</label>
-	<input type="text" id="Mean Anomaly" name="Mean Anomaly" />
-    <br> -->
-    <!-- <label for="Mean Motion">Mean Motion:</label>
-	<input type="text" id="Mean Motion" name="Mean Motion" />
-    <br> -->
-	<p><input type="submit" value="Submit"/></p>
+   </table>     
+        
+
+
+	<p><input type="submit" name="submit" value="Submit"/></p>
 </form>
 
 {% endblock %}
+
