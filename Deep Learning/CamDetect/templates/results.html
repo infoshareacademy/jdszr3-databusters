@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Is armageddon incoming?!?!?{% endblock %}
+
+{% block content %}
+    {% with messages  = get_flashed_messages() %}
+        {%if messages %}
+            {% for msg in messages%}
+                <p>{{msg}}</p>
+            {% endfor%}
+        {% endif %}
+    {% endwith %}
+
+
+{% if session['is_hazardous'] == 1 %}
+    <h1><font color="red">OMG!!! This asteroid is HAZARDOUS!!!</h1>
+    <h1>YOU HAVE TO LEAVE THE EARTH IMMEDIATELY!!!</font></h1>
+    <br>
+    <iframe width="900" height="505" 
+    src="https://www.youtube.com/embed/bU1QPtOZQZU?autoplay=1" 
+    title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen></iframe>
+{% else %}
+    <h1><font color="green">This asteroid is NOT hazardous.</h1>
+    <h1>The earth is safe. RELAX and WATCH the video. ;-)</font></h1>
+    <br>
+    <iframe width="900" height="505" src="https://www.youtube.com/embed/fGm6YzBrxiI?autoplay=1" 
+    title="YouTube video player" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen></iframe>    
+{% endif %}
+
+
+{% endblock %}

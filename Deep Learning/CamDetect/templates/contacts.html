@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+{% with messages  = get_flashed_messages() %}
+{%if messages %}
+    {% for msg in messages%}
+        <p>{{msg}}</p>
+    {% endfor%}
+{% endif %}
+{% endwith %}
+<br>
+
+
+<div class="container">
+        <div class="row row-cols-auto" align="center">
+        <div class="col-2" align="center">
+            <img src="/static/images/kin.jpeg" alt="Kinga Klejne" width="100" height="100">
+        </div>
+        <div class="col-2">Kinga Klejne</div>
+        <div class="col-2">
+            <a href="https://github.com/KingaKlejne">
+                <img src="/static/images/github.png" alt="GitHub" width="50" height="50">
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="https://www.linkedin.com/in/kinga-klejne/">
+                <img src="/static/images/linkedin.png" alt="Linkedin" width="50" height="50">
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row row-cols-auto" align="center">
+        <div class="col-2">
+            <img src="/static/images/kasia.png" alt="Kasia Hewelt" width="100" height="100">
+        </div>
+        <div class="col-2">Kasia Hewelt</div>
+        <div class="col-2">
+            <a href="https://github.com/kasiahewelt">
+                <img src="/static/images/github.png" alt="GitHub" width="50" height="50">
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="https://www.linkedin.com/in/katarzyna-hewelt/">
+                <img src="/static/images/linkedin.png" alt="Linkedin" width="50" height="50">
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row row-cols-auto" align="center">
+        <div class="col-2">
+            <img src="/static/images/piotr.jpeg" alt="Piotr Nowicki" width="100" height="100">
+        </div>
+        <div class="col-2">Piotr Nowicki</div>
+        <div class="col-2">
+            <a href="https://github.com/piotrnowicki1510">
+                <img src="/static/images/github.png" alt="GitHub" width="50" height="50">
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="https://www.linkedin.com/in/piotr-nowicki-5b3b2a209/">
+                <img src="/static/images/linkedin.png" alt="Linkedin" width="50" height="50">
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row row-cols-auto" align="center">
+        <div class="col-2">
+            <img src="/static/images/dar.jpeg" alt="Dariusz Starosta" width="100" height="100">
+        </div>
+        <div class="col-2">Dariusz Starosta</div>
+        <div class="col-2">
+            <a href="https://github.com/darstar-ds">
+                <img src="/static/images/github.png" alt="GitHub" width="50" height="50">
+            </a>
+        </div>
+        <div class="col-2">
+            <a href="https://www.linkedin.com/in/dariusz-starosta/">
+                <img src="/static/images/linkedin.png" alt="Linkedin" width="50" height="50">
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

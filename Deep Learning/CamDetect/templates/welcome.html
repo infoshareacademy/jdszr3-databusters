@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% block title %}ARMAGEDDON by Databusters{% endblock %}
+
+{% block content %}
+    {% with messages  = get_flashed_messages() %}
+        {%if messages %}
+            {% for msg in messages%}
+                <p>{{msg}}</p>
+            {% endfor%}
+        {% endif %}
+    {% endwith %}
+<div style="text-align: center;">
+    <img src="/static/images/aster.jpeg">
+    <br>
+    </br>
+    <h1>NASA ASTEROID CLASSFICATION</h1> 
+    <h4>Classifying whether an asteroid is hazardous or not</h4>  
+    <br>
+    </br>  
+    <h7>by DATABUSTERS</h7>  
+</div>
+<br>
+</br> 
+<br>
+</br> 
+<h4>INTRODUCTION</h4>
+<h6>Data</h6>
+The data is about Asteroids - NeoWs. NeoWs (Near Earth Object Web Service) is a RESTful web service for near earth Asteroid information. With NeoWs a user can: search for Asteroids based on their closest approach date to Earth, lookup a specific Asteroid with its NASA JPL small body id, as well as browse the overall data-set. Acknowledgements Data-set: All the data is from the (http://neo.jpl.nasa.gov/). This API is maintained by SpaceRocks Team: David Greenfield, Arezu Sarvestani, Jason English and Peter Baunach.
+<br>
+</br>
+<h6>Tasks</h6>
+Based on the information within the dataset we want to performs two tasks:
+<br>
+</br>
+<ul>
+<li>Develop a model that predicts if an asteroid is going to be hazardous or not</li>
+<li>Build an application</li></ul>
+<br>
+</br>
+To tackle this two tasks we'll use the methods listed below, and extract the results from the method with best performance on unseen data
+<br>
+</br>
+<ul>
+<li>Logistic Regression</li>
+<li>Decision Tree</li>
+<li>Random Forest</li>
+<li>SVM</li>
+<li>XGBoost</li>
+<li>KNN</li>
+<li>KMeans</li>
+</ul>
+<br>
+</br> 
+<h4>ASTEROIDS</h4>
+
+Asteroids are minor planets, especially of the inner Solar System. Larger asteroids have also been called planetoids. 
+There exist millions of asteroids and the vast majority of known asteroids orbit within the central asteroid belt located between the orbits of Mars and Jupiter, or are co-orbital with Jupiter (the Jupiter Trojans).
+<br>
+</br>
+
+<h6>ASTEROID DATASET</h6>
+
+The data is about Asteroids and is provided by NEOWS(Near-Earth Object Web Service)
+
+The dataset consists of 4687 data instances(rows) and 40 features(columns). Also, there are no null values in the dataset.
+<br>
+</br>
+Some of the features’ description is given below:
+<br>
+</br>
+<ul>
+<li>
+    ‘Neo Reference ID’: This feature denotes the reference ID assigned to an asteroid.
+</li>
+<li>
+    ‘Name’: This feature denotes the name given to an asteroid.</li>
+<li>
+    ‘Absolute Magnitude’: This feature denotes the absolute magnitude of an asteroid. An asteroid’s absolute magnitude is the visual magnitude an observer would record if the asteroid were placed 1 Astronomical Unit (AU) away, and 1 AU from the Sun and at a zero phase angle.</li>
+<li>
+    'Est Dia in KM(min)’: This feature denotes the estimated diameter of the asteroid in kilometres (KM).</li>
+<li>
+    ‘Est Dia in M(min)’: This feature denotes the estimated diameter of the asteroid in meters(M).
+</li>
+<li>
+    ‘Relative Velocity km per sec’: This feature denotes the relative velocity of the asteroid in kilometre per second.
+</li>
+<li>
+    ‘Relative Velocity km per hr’: This feature denotes the relative velocity of the asteroid in kilometre per hour. 
+</li>
+<li>
+    ‘Orbiting Body’: This feature denotes the planet around which the asteroid is revolving.
+</li>
+<li>
+    ‘Jupiter Tisserand Invariant’: This feature denotes the Tisserand’s parameter for the asteroid. Tisserand’s parameter (or Tisserand’s invariant) is a value calculated from several orbital elements(semi-major axis, orbital eccentricity, and inclination) of a relatively small object and a more substantial‘ perturbing body’. It is used to distinguish different kinds of orbits.
+</li>
+<li>
+    ‘Eccentricity’: This feature denotes the value of eccentricity of the asteroid’s orbit. Just like many other bodies in the solar system, the realms made by asteroids are not perfect circles, but ellipses. The axis marked eccentricity is a measure of how far from circular each orbit is: the smaller the eccentricity number, the more circular the realm.
+</li>
+<li>
+    ‘Semi Major Axis’: This feature denotes the value of the Semi Major Axis of the asteroid’s orbit. As discussed above, the realm of an asteroid is elliptical rather than circular. Hence, the Semi Major Axis exists.
+</li>
+<li>
+    ‘Orbital Period’: This feature denotes the value of the orbital period of the asteroid. Orbital period refers to the time taken by the asteroid to make one full revolution around its orbiting body.
+</li>
+<li>
+    ‘Perihelion Distance’: This feature denotes the value of the Perihelion distance of the asteroid. For a body orbiting the Sun, the point of least distance is the perihelion.
+</li>
+<li>
+    ‘Aphelion Dist’: This feature denotes the value of Aphelion distance of the asteroid. For a body orbiting the Sun, the point of greatest distance is the aphelion.
+</li>
+<li>
+    ‘Hazardous’: This feature denotes whether the asteroid is hazardous or not.
+</li>
+
+</ul>
+
+<br>
+</br>
+    <img src="/static/images/hazardous.png" width="1200" height="600">
+    <br>
+    </br>
+
+    The count plot depicts that it is a case of an imbalanced dataset. We have a class which is dominating the other in terms of the number of data entries.
+    83.89% of the data instances are labelled as 0 (not hazardous) and only
+    16.10% are labelled as 1 (hazardous).
+    <br>
+    </br>
+    This means that even if we have a broken model that predicts all values as 0(not hazardous), then the accuracy will be 83.89%. So, we can not merely rely on accuracy to evaluate a machine learning classifier trained on this dataset. To get a clear idea of imbalanced data and numerous metrics that are used to evaluate a classification model, please read <a href="https://medium.com/@itbodhi/handling-imbalanced-data-sets-in-machine-learning-5e5f33c70163">this article </a>.
+    <br>
+</br>
+<br>
+</br>
+
+<h6>Models - scores</h6>
+<br>
+</br>
+<img src="/static/images/scores.png" width="1200" height="600">
+<br>
+</br>
+<h6>Conclusion</h6>
+We got to know about asteroids and more importantly built an almost perfect classifier to predict whether an asteroid is hazardous or not.
+The choice of the features for the dataset was perfect since the results obtained by the machine learning models were great.
+<br>
+</br>
+<br>
+</br>
+<p>TRY OUR APP</p>
+
+<button onclick="myFunction()">Try it!</button>
+
+<script>
+function myFunction() {
+  alert("He he go to the next tab and please fill in the form :) ENJOY!");
+}
+</script>
+
+<br>
+</br>
+<br>
+</br>
+{% endblock %}
