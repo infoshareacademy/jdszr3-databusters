@@ -24,28 +24,40 @@
 <br>
 </br> 
 <h4>INTRODUCTION</h4>
+<br>
+</br>
 <h6>Dataset</h6>
 The German Traffic Sign Dataset consists of 89,989 32×32 px color images that we are supposed to use for training, and 12,630 images that we will use for testing. 
 Each image is a photo of a traffic sign belonging to one of 43 classes, e.g. traffic sign types.
 <br>
 </br>
+<div style="text-align: center;">
 <img src="/static/images/random.png">
-<br>Random dataset sample</br>
+<br>Random dataset sample</br></div>
 <br>
 </br>
 Each image is a 32×32×3 array of pixel intensities, represented as [0, 255] integer values in RGB color space. Class of each image is encoded as an integer in a 0 to 42 range. Let’s check if the training dataset is balanced across classes.
 <br>
 </br>
+<div style="text-align: center;">
 <img src="/static/images/distrib.png">
-<br>Dataset classes distribution</br>
+<br>Dataset classes distribution</br></div>
 <br>
 </br>
-<h6>Tasks</h6>
-Based on the information within the dataset we want to performs two tasks:
+<h6>Motivation & Tasks</h6>
+In the past and recent times, there have been many road accidents where the main reason for these being
+inadequate knowledge of road and traffic signs. Even though speed is one of the key issues for the cause of
+such atrocities, in a survey, it was found out that the second most heard reason was an individual not knowing
+what a particular traffic sign meant. We strongly believe that the research that we have done would help
+individuals learn these signs intuitively, especially the adolescence of 21st century, who also stay and live around
+technology, which is growing faster than ever. Especially in terms of self-driving cars.
+<br>
+</br>
+Tasks:
 <br>
 </br>
 <ul>
-<li>Develop a model that predicts if an asteroid is going to be hazardous or not</li>
+<li>Develop a CNN model to detect traffic signs</li>
 <li>Build an application</li></ul>
 <br>
 </br>
