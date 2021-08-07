@@ -1,0 +1,217 @@
+for i in range(len(model)):
+  model[i] = Sequential()
+  model[i].add(Conv2D(filters=ds_filters[i], kernel_size=(3, 3), padding='same',
+                  input_shape=X_test.shape[1:],
+                  activation='relu'))
+  model[i].add(Conv2D(filters=ds_filters[i], kernel_size=(3, 3), activation='relu'))
+  model[i].add(MaxPool2D(pool_size=(2, 2)))
+  model[i].add(Dropout(ds_drop[i]))
+
+  model[i].add(Conv2D(filters=ds_filters[i], kernel_size=(3, 3), padding='same', activation='relu'))
+  model[i].add(MaxPool2D(pool_size=(2, 2)))
+  model[i].add(Dropout(ds_drop[i]))
+
+  model[i].add(Conv2D(filters=ds_filters[i], kernel_size=(3, 3), padding='same', activation='relu'))
+  model[i].add(MaxPool2D(pool_size=(2, 2)))
+  model[i].add(Dropout(ds_drop[i]))
+
+  model[i].add(Flatten())
+  model[i].add(Dense(units=ds_units1[i], activation='relu'))
+  # model[i].add(Dense(units=ds_units1[i], activation='relu'))
+  model[i].add(Dropout(ds_drop[i]))
+  model[i].add(Dense(43, activation='softmax'))
+  model[i].compile(optimizer=Adam(learning_rate=ds_lr), loss='categorical_crossentropy', metrics=['accuracy'])
+
+  model[i].summary()
+  
+  
+  
+Model with filters number 64, epochs=20, training accuracy=0.97566, validation accuracy=0.94263.
+Model with filters number 128, epochs=15, training accuracy=0.98828, validation accuracy=0.94467.
+Model with filters number 512, epochs=10, training accuracy=0.99647, validation accuracy=0.95465.
+Model with filters number 1024, epochs=5, training accuracy=0.99236, validation accuracy=0.94671.
+
+Model: "sequential_3"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_12 (Conv2D)           (None, 32, 32, 512)       14336     
+_________________________________________________________________
+conv2d_13 (Conv2D)           (None, 30, 30, 512)       2359808   
+_________________________________________________________________
+max_pooling2d_9 (MaxPooling2 (None, 15, 15, 512)       0         
+_________________________________________________________________
+dropout_12 (Dropout)         (None, 15, 15, 512)       0         
+_________________________________________________________________
+conv2d_14 (Conv2D)           (None, 15, 15, 512)       2359808   
+_________________________________________________________________
+max_pooling2d_10 (MaxPooling (None, 7, 7, 512)         0         
+_________________________________________________________________
+dropout_13 (Dropout)         (None, 7, 7, 512)         0         
+_________________________________________________________________
+conv2d_15 (Conv2D)           (None, 7, 7, 512)         2359808   
+_________________________________________________________________
+max_pooling2d_11 (MaxPooling (None, 3, 3, 512)         0         
+_________________________________________________________________
+dropout_14 (Dropout)         (None, 3, 3, 512)         0         
+_________________________________________________________________
+flatten_3 (Flatten)          (None, 4608)              0         
+_________________________________________________________________
+dense_6 (Dense)              (None, 512)               2359808   
+_________________________________________________________________
+dropout_15 (Dropout)         (None, 512)               0         
+_________________________________________________________________
+dense_7 (Dense)              (None, 43)                22059     
+=================================================================
+Total params: 9,475,627
+Trainable params: 9,475,627
+Non-trainable params: 0
+_________________________________________________________________
+
+
+Model with filters number 64, epochs=20, learning rate=0.00010, training accuracy=0.99325, validation accuracy=0.96871.
+Model with filters number 128, epochs=15, learning rate=0.00010, training accuracy=0.99655, validation accuracy=0.97098.
+Model with filters number 256, epochs=10, learning rate=0.00010, training accuracy=0.99690, validation accuracy=0.96961.
+Model with filters number 512, epochs=5, learning rate=0.00010, training accuracy=0.99330, validation accuracy=0.96599.
+
+Model: "sequential_7"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_28 (Conv2D)           (None, 32, 32, 256)       7168      
+_________________________________________________________________
+conv2d_29 (Conv2D)           (None, 30, 30, 256)       590080    
+_________________________________________________________________
+max_pooling2d_21 (MaxPooling (None, 15, 15, 256)       0         
+_________________________________________________________________
+dropout_28 (Dropout)         (None, 15, 15, 256)       0         
+_________________________________________________________________
+conv2d_30 (Conv2D)           (None, 15, 15, 256)       590080    
+_________________________________________________________________
+max_pooling2d_22 (MaxPooling (None, 7, 7, 256)         0         
+_________________________________________________________________
+dropout_29 (Dropout)         (None, 7, 7, 256)         0         
+_________________________________________________________________
+conv2d_31 (Conv2D)           (None, 7, 7, 256)         590080    
+_________________________________________________________________
+max_pooling2d_23 (MaxPooling (None, 3, 3, 256)         0         
+_________________________________________________________________
+dropout_30 (Dropout)         (None, 3, 3, 256)         0         
+_________________________________________________________________
+flatten_7 (Flatten)          (None, 2304)              0         
+_________________________________________________________________
+dense_14 (Dense)             (None, 512)               1180160   
+_________________________________________________________________
+dropout_31 (Dropout)         (None, 512)               0         
+_________________________________________________________________
+dense_15 (Dense)             (None, 43)                22059     
+=================================================================
+Total params: 2,979,627
+Trainable params: 2,979,627
+Non-trainable params: 0
+_________________________________________________________________
+
+Model with filters number 64, epochs=30, learning rate=0.00010, batch_size=16 training accuracy=0.99632, validation accuracy=0.97120.
+Model with filters number 128, epochs=25, learning rate=0.00010, batch_size=16 training accuracy=0.99833, validation accuracy=0.97211.
+Model with filters number 128, epochs=20, learning rate=0.00010, batch_size=16 training accuracy=0.99807, validation accuracy=0.97438.
+Model with filters number 256, epochs=15, learning rate=0.00010, batch_size=16 training accuracy=0.99787, validation accuracy=0.97460.
+
+395/395 [==============================] - 2s 6ms/step - loss: 0.2186 - accuracy: 0.9575
+Test loss: 0.21859237551689148
+Test accuracy: 0.9574821591377258
+395/395 [==============================] - 3s 8ms/step - loss: 0.1984 - accuracy: 0.9641
+Test loss: 0.1983952820301056
+Test accuracy: 0.9641330242156982
+395/395 [==============================] - 3s 8ms/step - loss: 0.1845 - accuracy: 0.9668
+Test loss: 0.18446996808052063
+Test accuracy: 0.966825008392334
+395/395 [==============================] - 6s 15ms/step - loss: 0.1622 - accuracy: 0.9678
+Test loss: 0.1622261106967926
+Test accuracy: 0.9677751660346985
+
+
+Model: "sequential_11"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_44 (Conv2D)           (None, 32, 32, 256)       7168      
+_________________________________________________________________
+conv2d_45 (Conv2D)           (None, 30, 30, 256)       590080    
+_________________________________________________________________
+max_pooling2d_33 (MaxPooling (None, 15, 15, 256)       0         
+_________________________________________________________________
+dropout_44 (Dropout)         (None, 15, 15, 256)       0         
+_________________________________________________________________
+conv2d_46 (Conv2D)           (None, 15, 15, 256)       590080    
+_________________________________________________________________
+max_pooling2d_34 (MaxPooling (None, 7, 7, 256)         0         
+_________________________________________________________________
+dropout_45 (Dropout)         (None, 7, 7, 256)         0         
+_________________________________________________________________
+conv2d_47 (Conv2D)           (None, 7, 7, 256)         590080    
+_________________________________________________________________
+max_pooling2d_35 (MaxPooling (None, 3, 3, 256)         0         
+_________________________________________________________________
+dropout_46 (Dropout)         (None, 3, 3, 256)         0         
+_________________________________________________________________
+flatten_11 (Flatten)         (None, 2304)              0         
+_________________________________________________________________
+dense_22 (Dense)             (None, 512)               1180160   
+_________________________________________________________________
+dropout_47 (Dropout)         (None, 512)               0         
+_________________________________________________________________
+dense_23 (Dense)             (None, 43)                22059     
+=================================================================
+Total params: 2,979,627
+Trainable params: 2,979,627
+Non-trainable params: 0
+_________________________________________________________________
+
+Model with filters number 32, epochs=40, learning rate=0.00010, batch_size=16 training accuracy=0.99101, validation accuracy=0.96757.
+Model with filters number 64, epochs=30, learning rate=0.00010, batch_size=16 training accuracy=0.99681, validation accuracy=0.97188.
+Model with filters number 128, epochs=25, learning rate=0.00010, batch_size=16 training accuracy=0.99856, validation accuracy=0.97256.
+Model with filters number 256, epochs=20, learning rate=0.00010, batch_size=16 training accuracy=0.99833, validation accuracy=0.97460.
+
+395/395 [==============================] - 2s 5ms/step - loss: 0.1850 - accuracy: 0.9616
+Test loss: 0.18504929542541504
+Test accuracy: 0.9615993499755859
+395/395 [==============================] - 3s 6ms/step - loss: 0.2440 - accuracy: 0.9629
+Test loss: 0.24395714700222015
+Test accuracy: 0.9629453420639038
+395/395 [==============================] - 3s 8ms/step - loss: 0.2061 - accuracy: 0.9654
+Test loss: 0.20613223314285278
+Test accuracy: 0.9653998613357544
+395/395 [==============================] - 7s 16ms/step - loss: 0.2248 - accuracy: 0.9652
+Test loss: 0.22480514645576477
+Test accuracy: 0.9651623368263245
+
+Model with filters number 32, epochs=9, learning rate=0.00041, batch_size=16 training accuracy=0.98397, validation accuracy=0.97166.
+Model with filters number 64, epochs=13, learning rate=0.00027, batch_size=16 training accuracy=0.99578, validation accuracy=0.97891.
+Model with filters number 128, epochs=6, learning rate=0.00055, batch_size=16 training accuracy=0.98922, validation accuracy=0.96621.
+Model with filters number 256, epochs=11, learning rate=0.00033, batch_size=16 training accuracy=0.99612, validation accuracy=0.97528.
+Model with filters number 128, epochs=12, learning rate=0.00006, batch_size=10 training accuracy=0.99856, validation accuracy=0.97528.
+Model with filters number 256, epochs=16, learning rate=0.00004, batch_size=10 training accuracy=0.99951, validation accuracy=0.97642.
+395/395 [==============================] - 4s 9ms/step - loss: 0.2012 - accuracy: 0.9701
+Test loss: 0.20120061933994293
+Test accuracy: 0.9700712561607361
+
+Model with filters number 256, epochs=8, learning rate=0.00009, batch_size=10 training accuracy=0.99802, validation accuracy=0.97959.
+Model with filters number 256, epochs=14, learning rate=0.00005, batch_size=10 training accuracy=0.99931, validation accuracy=0.98322.
+395/395 [==============================] - 4s 8ms/step - loss: 0.2232 - accuracy: 0.9663
+Test loss: 0.2232348471879959
+Test accuracy: 0.9663499593734741
+395/395 [==============================] - 3s 8ms/step - loss: 0.1642 - accuracy: 0.9747
+Test loss: 0.16419588029384613
+Test accuracy: 0.9747426509857178
+
+Model with filters number 256, epochs=9, learning rate=0.00008, batch_size=8 training accuracy=0.99810, validation accuracy=0.97619.
+
+395/395 [==============================] - 4s 8ms/step - loss: 0.2060 - accuracy: 0.9698
+Test loss: 0.20600368082523346
+Test accuracy: 0.9697545766830444
+
+Model with filters number 256, epochs=6, learning rate=0.00011, batch_size=5 training accuracy=0.99672, validation accuracy=0.97506.
+395/395 [==============================] - 5s 9ms/step - loss: 0.1579 - accuracy: 0.9714
+Test loss: 0.15786212682724
+Test accuracy: 0.971417248249054
+

@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}TRAFFIC SIGNS by Databusters{% endblock %}
+
+{% block content %}
+    {% with messages  = get_flashed_messages() %}
+        {%if messages %}
+            {% for msg in messages%}
+                <p>{{msg}}</p>
+            {% endfor%}
+        {% endif %}
+    {% endwith %}
+<div style="text-align: center;">
+    <img src="/static/images/traffic.png">
+    <br>
+    </br>
+    <h1>Traffic Signs Classification</h1> 
+    <h4>Deep Learning CNN</h4>  
+    <br>
+    </br>  
+    <h7>by DATABUSTERS</h7>  
+</div>
+<br>
+</br> 
+<br>
+</br> 
+<h4>INTRODUCTION</h4>
+<br>
+</br>
+<h6>Dataset</h6>
+The German Traffic Sign Dataset consists of 89,989 32×32 px color images that we are supposed to use for training, and 12,630 images that we will use for testing. 
+Each image is a photo of a traffic sign belonging to one of 43 classes, e.g. traffic sign types.
+<br>
+</br>
+<div style="text-align: center;">
+<img src="/static/images/random.png">
+<br>Random dataset sample</br></div>
+<br>
+</br>
+Each image is a 32×32×3 array of pixel intensities, represented as [0, 255] integer values in RGB color space. Class of each image is encoded as an integer in a 0 to 42 range. Let’s check if the training dataset is balanced across classes.
+<br>
+</br>
+<div style="text-align: center;">
+<img src="/static/images/distrib.png">
+<br>Dataset classes distribution</br></div>
+<br>
+</br>
+<h6>Motivation & Tasks</h6>
+In the past and recent times, there have been many road accidents where the main reason for these being
+inadequate knowledge of road and traffic signs. Even though speed is one of the key issues for the cause of
+such atrocities, in a survey, it was found out that the second most heard reason was an individual not knowing
+what a particular traffic sign meant. We strongly believe that the research that we have done would help
+individuals learn these signs intuitively, especially the adolescence of 21st century, who also stay and live around
+technology, which is growing faster than ever. Especially in terms of self-driving cars.
+<br>
+</br>
+Tasks:
+<br>
+</br>
+<ul>
+<li>Develop a CNN model to detect traffic signs</li>
+<li>Build an application</li></ul>
+<br>
+</br>
+
+</br> 
+<h4>MODEL ARCHITECTURE</h4>
+<br>
+</br>
+<div style="text-align: center;">
+    <img src="/static/images/model_plot.png">
+<br>
+</br>
+<br>
+</br>
+
+<h6>PLOTS</h6>
+<br>
+</br>
+<h6>Confusion Matrix</h6>
+<div style="text-align: center;">
+    <img src="/static/images/matrix.png">
+<br>
+</br>
+<h6>Training and validation accuracy</h6>
+<div style="text-align: center;">
+    <img src="/static/images/accuracy.png">
+<br>
+</br>
+<br>
+</br>
+<h6>Training and validation loss</h6>
+<div style="text-align: center;">
+    <img src="/static/images/loss.png">
+<br>
+</br>
+<br>
+</br>
+<br>
+</br>
+<h1>TRY OUR APP!</h1>
+<br>
+</br>
+
+<br>
+</br>
+<br>
+</br>
+{% endblock %} -->
