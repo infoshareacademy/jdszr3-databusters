@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Is armageddon incoming?!?!?{% endblock %}
+{% block title %}WHAT is that sign?!?!?{% endblock %}
 
 {% block content %}
     {% with messages  = get_flashed_messages() %}
@@ -12,22 +12,17 @@
 
 
 {% if session['is_hazardous'] == 1 %}
-    <h1><font color="red">OMG!!! This asteroid is HAZARDOUS!!!</h1>
-    <h1>YOU HAVE TO LEAVE THE EARTH IMMEDIATELY!!!</font></h1>
+    <h1><font color="red">This is the uploaded file!!!</font></h1>
     <br>
-    <iframe width="900" height="505" 
-    src="https://www.youtube.com/embed/bU1QPtOZQZU?autoplay=1" 
-    title="YouTube video player" frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen></iframe>
+    <!-- <img src=f alt="traffic sign"> -->
+    {{ url_for('static', filename=f) }}
 {% else %}
-    <h1><font color="green">This asteroid is NOT hazardous.</h1>
-    <h1>The earth is safe. RELAX and WATCH the video. ;-)</font></h1>
+    <h3 style="text-align:center;"><font color="grey">This is the uploaded file!!!</font></h3>
     <br>
-    <iframe width="900" height="505" src="https://www.youtube.com/embed/fGm6YzBrxiI?autoplay=1" 
-    title="YouTube video player" frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen></iframe>    
+    <h2 style="text-align:center;"><img src="{{  user_image  }}" alt="User Image" width="400" height="400" vertical-align="middle"></h2>
+    <br>
+    <h1 style="text-align:center;"><font color="red">Prediction: {{  prediction  }}</font></h1>
+    <!-- <img src="\static\images\logo.png" alt="Logo Image"> -->
 {% endif %}
 
 
